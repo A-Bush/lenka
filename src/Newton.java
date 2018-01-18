@@ -31,14 +31,12 @@ public class Newton {
         double e = 0.0001;
 
         for (int i = 0; i < fxs.size(); i++) {
-            method_newton(start, e, i);
+            method_newton(start, e, fxs.get(i), dfxs.get(i));
         }
     }
 
-    private static void method_newton(double x0, double e, int i) {
+    private static void method_newton(double x0, double e, Function<Double, Double> f, Function<Double, Double> df) {
 
-        Function<Double, Double> f = fxs.get(i);
-        Function<Double, Double> df = dfxs.get(i);
         int j = 0;
 
         double x1 = newton(x0, f, df);
